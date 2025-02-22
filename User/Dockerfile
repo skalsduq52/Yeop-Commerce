@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 
 # Gradle Build
-COPY build/libs/user-manage-0.0.1-SNAPSHOT.jar /app/userManage.jar
+COPY build/libs/User-manage-0.0.1-SNAPSHOT.jar /app/userManage.jar
 
 ENV TZ=Asia/Seoul
 
