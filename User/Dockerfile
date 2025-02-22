@@ -9,5 +9,4 @@ COPY build/libs/user-manage-0.0.1-SNAPSHOT.jar /app/userManage.jar
 
 ENV TZ=Asia/Seoul
 
-EXPOSE 8080
 CMD ["java", "-jar", "-Duser.timezone=Asia/Seoul", "/app/userManage.jar"]
