@@ -29,9 +29,3 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
-jar {
-    archiveBaseName.set("user-manage")
-    archiveVersion.set("0.0.1")
-    archiveClassifier.set("")
-}
