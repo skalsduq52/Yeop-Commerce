@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.2'  // Spring Boot 버전 3.2.2로 변경
-    id 'io.spring.dependency-management' version '1.1.0' // 3.x 호환 버전
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group = 'org.yeopCm'
