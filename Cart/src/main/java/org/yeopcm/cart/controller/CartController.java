@@ -1,13 +1,12 @@
-package org.yeopcm.user.controller;
+package org.yeopcm.cart.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserController {
-
+public class CartController {
     @GetMapping("/")
     public String Hello() {
-        return "User 페이지.";
+        return "Cart 페이지.";
     }
 }
