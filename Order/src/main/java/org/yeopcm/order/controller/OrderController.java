@@ -8,7 +8,7 @@ public class OrderController {
 
     @GetMapping("/")
     public String Hello() {
-        return "Order 페이지 구성완료.";
+        return "Order 페이지 구성완료1.";
     }
 
 }

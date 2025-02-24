@@ -1,4 +1,11 @@
+server:
+  port: 8081  # User 서비스 포트
+
 spring:
+  application:
+    name: user-service
+
+
   datasource:
     url: jdbc:mariadb://127.0.0.1:3306/LAPLACE
     driver-class-name: org.mariadb.jdbc.Driver
