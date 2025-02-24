@@ -10,24 +10,24 @@ spring:
           lower-case-service-id: true
 
       routes:
-        - id: user-service
-          uri: lb://user-service
+        - id: user
+          uri: lb://user
           predicates:
             - Path=/user/**
-        - id: product-service
-          uri: lb://product-service
+        - id: product
+          uri: lb://product
           predicates:
             - Path=/product/**
-        - id: order-service
-          uri: lb://order-service
+        - id: order
+          uri: lb://order
           predicates:
             - Path=/order/**
-        - id: cart-service
-          uri: lb://cart-service
+        - id: cart
+          uri: lb://cart
           predicates:
             - Path=/cart/**
-        - id: search-service
-          uri: lb://search-service
+        - id: search
+          uri: lb://search
           predicates:
             - Path=/search/**
 
@@ -38,6 +38,7 @@ eureka:
     service-url:
       defaultZone: http://3.34.71.5:8761/eureka/
   instance:
+    hostname: 3.34.71.5
     prefer-ip-address: true
 
 
