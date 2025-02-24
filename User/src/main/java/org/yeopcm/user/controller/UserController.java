@@ -8,6 +8,6 @@ public class UserController {
 
     @GetMapping("/")
     public String Hello() {
-        return "Jenkins CI/CD 파이프라인 하겠습니다1.";
+        return "Jenkins CI/CD 하겠습니다1.";
     }
 }
