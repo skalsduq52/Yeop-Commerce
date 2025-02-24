@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 
 # Gradle Build
-COPY build/libs/Eureka-0.0.1-SNAPSHOT.jar /app/EurekaServer.jar
+COPY build/libs/EurekaServer-0.0.1-SNAPSHOT.jar /app/EurekaServer.jar
 
 ENV TZ=Asia/Seoul
 
