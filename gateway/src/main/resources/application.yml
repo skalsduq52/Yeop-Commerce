@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 spring:
   application:
     name: api-gateway
@@ -8,30 +5,32 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: user-route
+        - id: user-service
           uri: lb://USER-SERVICE
           predicates:
             - Path=/user/**
-        - id: product-route
+        - id: product-service
           uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/product/**
-        - id: order-route
+        - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order/**
-        - id: cart-route
+        - id: cart-service
           uri: lb://CART-SERVICE
           predicates:
             - Path=/cart/**
-        - id: search-route
+        - id: search-service
           uri: lb://SEARCH-SERVICE
           predicates:
             - Path=/search/**
 
 eureka:
   client:
-    serviceUrl:
+    service-url:
       defaultZone: http://3.34.71.5:8761/eureka/
+  instance:
+    prefer-ip-address: true
 
 
