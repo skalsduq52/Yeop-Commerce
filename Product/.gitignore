@@ -71,7 +71,6 @@ out/
 .gradle/caches/
 .gradle/gradle.properties
 gradle.properties
-gradlew
 gradlew.bat
 /build/
 buildSrc/.gradle/
