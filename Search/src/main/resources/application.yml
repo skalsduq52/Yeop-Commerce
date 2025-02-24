@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: search-service
+
   datasource:
     url: jdbc:mariadb://127.0.0.1:3306/LAPLACE
     driver-class-name: org.mariadb.jdbc.Driver
@@ -13,3 +16,10 @@ spring:
       hibernate:
         format_sql: true #To beautify or pretty print the SQL
         show_sql: true #show sql
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://3.34.71.5:8761/eureka/
+  instance:
+    prefer-ip-address: true
