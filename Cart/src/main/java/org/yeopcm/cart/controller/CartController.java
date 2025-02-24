@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartController {
     @GetMapping("/")
     public String Hello() {
-        return "Cart 페이지.";
+        return "Cart 페이지 구성완료.";
     }
 }

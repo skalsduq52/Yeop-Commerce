@@ -8,7 +8,7 @@ public class ProductController {
 
     @GetMapping("/")
     public String Hello() {
-        return "Product 페이지.";
+        return "Product 페이지 구성완료.";
     }
 
 }

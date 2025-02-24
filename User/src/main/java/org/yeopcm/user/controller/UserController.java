@@ -8,6 +8,6 @@ public class UserController {
 
     @GetMapping("/")
     public String Hello() {
-        return "User 페이지.";
+        return "User 페이지 구성완료.";
     }
 }

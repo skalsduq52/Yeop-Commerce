@@ -8,6 +8,6 @@ public class SearchController {
 
     @GetMapping("/")
     public String Hello() {
-        return "Search 페이지.";
+        return "Search 페이지 구성완료.";
     }
 }
