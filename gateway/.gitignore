@@ -1,0 +1,91 @@
+### General ###
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### Docker ###
+docker-compose.override.yml
+*.env
+*.dockerignore
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+.idea/modules.xml
+.idea/*.iml
+.idea/workspace.xml
+.idea/libraries/
+.idea/shelf/
+.idea/tasks/
+.idea/vcs.xml
+.idea/modules/
+.idea/artifacts/
+.idea/dictionaries/
+.idea/dataSources/
+.idea/dataSources.local.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/codeStyles/
+.idea/inspectionProfiles/
+.idea/jarRepositories.xml
+.idea/libraries/
+.idea/compiler.xml
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Gradle ###
+.gradle/
+.gradle/wrapper/dists/
+.gradle/caches/
+.gradle/gradle.properties
+gradle.properties
+gradlew.bat
+/build/
+buildSrc/.gradle/
+buildSrc/build/
+
+### Lombok ###
+.lombok/
+
+### Spring Boot ###
+.spring-boot-devtools.properties
+target/
+
+### 환경 변수 및 보안 파일 ###
+.env
+.env.local
+.env.*.local
+*.keystore
+*.p12
