@@ -18,15 +18,37 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // mysql, JPA 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.3.3'
+
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.hibernate.validator:hibernate-validator:7.0.4.Final'
+    implementation 'org.glassfish:jakarta.el:4.0.2'
+
+
+
+    // 로그인 관련 oauth, jwt, Redis 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // eureka 클라이언트 라이브러리
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+// Eureka 라이브러리
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.3"

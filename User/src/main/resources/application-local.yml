@@ -1,4 +1,15 @@
+server:
+  port: 8081
+
 spring:
+  config:
+    activate:
+      on-profile: local
+
+  data:
+    redis:
+      url: redis://localhost:6379
+
   application:
     name: user
 
@@ -17,7 +28,12 @@ spring:
         format_sql: true
         show_sql: true
 
-jwt:
-  secret: YXNma2RqaDI0bzM1cmlqc2Rsa2ZmOTAyMzQ1
-  access-token-expiration: 3600000
-  refresh-token-expiration: 604800000
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
