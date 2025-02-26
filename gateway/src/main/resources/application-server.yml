@@ -4,11 +4,9 @@ spring:
 
   cloud:
     gateway:
-      default-filters:
-        - JwtAuthenticationFilter
       discovery:
         locator:
-          enabled: false
+          enabled: true
           lower-case-service-id: true
 
       routes:
@@ -51,20 +49,3 @@ management:
   endpoint:
     gateway:
       enabled: true
-
-jwt:
-  secret: YXNma2RqaDI0bzM1cmlqc2Rsa2ZmOTAyMzQ1rERFsdfwerfDAGqrtgSD1w123adfvdrgFGBKFVsdfl1o2sasf4512eaggfdf
-  access-token-expiration: 3600000
-  refresh-token-expiration: 604800000
-
-logging:
-  level:
-    org.springframework.security: TRACE
-    org.springframework.web: TRACE
-    org.springframework.security.oauth2.jwt: TRACE
-    org.springframework.security.oauth2.server.resource: TRACE
-    org.springframework.security.authentication: TRACE
-    com.nimbusds.jose: TRACE
-    com.nimbusds.jose.proc: TRACE
-    com.nimbusds.jwt: TRACE
-
