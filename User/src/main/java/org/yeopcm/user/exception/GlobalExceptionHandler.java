@@ -31,4 +31,12 @@ public class GlobalExceptionHandler {
         error.put("message", ex.getMessage());
         return  ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
+
+    @ExceptionHandler(LoginValidException.class)
+    public ResponseEntity<Map<String,String>> handleLoginValidationException(LoginValidException ex) {
+        Map<String,String> error = new HashMap<>();
+        error.put("error", "check email or password");
+        error.put("message", ex.getMessage());
+        return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
 }

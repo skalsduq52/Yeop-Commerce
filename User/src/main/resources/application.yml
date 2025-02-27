@@ -18,6 +18,6 @@ spring:
         show_sql: true
 
 jwt:
-  secret: YXNma2RqaDI0bzM1cmlqc2Rsa2ZmOTAyMzQ1
+  secret: YXNma2RqaDI0bzM1cmlqc2Rsa2ZmOTAyMzQ1rERFsdfwerfDAGqrtgSD1w123adfvdrgFGBKFVsdfl1o2sasf4512eaggfdf
   access-token-expiration: 3600000
   refresh-token-expiration: 604800000

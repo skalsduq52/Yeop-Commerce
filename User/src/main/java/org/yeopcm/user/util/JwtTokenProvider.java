@@ -1,6 +1,7 @@
 package org.yeopcm.user.util;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -8,12 +9,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
 
-    private final SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+    @Value("${jwt.secret}")
+    private String jwtSecret;
 
     @Value("${jwt.access-token-expiration}")
     private Long accessTokenExpiration;
@@ -30,7 +33,7 @@ public class JwtTokenProvider {
                 .setSubject(email)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(secretKey, SignatureAlgorithm.HS512)
+                .signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS512)
                 .compact();
     }
 
@@ -43,27 +46,34 @@ public class JwtTokenProvider {
                 .setSubject(email)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(secretKey, SignatureAlgorithm.HS512)
+                .signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS512)
                 .compact();
     }
 
-    public String getUserEmailJWT(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(secretKey)
-                .parseClaimsJws(token)
-                .getBody();
+    public Claims getClaimsFromToken(String token) {
+        try {
+            SecretKey key = Keys.hmacShaKeyFor(jwtSecret.getBytes());
+            Jws<Claims> claimsJws = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token);
 
-        return claims.getSubject();
+            return claimsJws.getBody();
+        } catch (SecurityException e) {
+            throw new RuntimeException("Invalid JWT signature");
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid JWT token");
+        }
     }
 
-    public boolean validateToken(String token) {
+    /*public boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
         } catch (Exception ex) {
             return false;
         }
-    }
+    }*/
 
 
 }
