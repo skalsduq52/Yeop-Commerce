@@ -9,4 +9,4 @@ COPY build/libs/User-0.0.1-SNAPSHOT.jar /app/UserManage.jar
 
 ENV TZ=Asia/Seoul
 
-CMD ["java", "-jar", "-Dspring.profiles.active=server", "-Duser.timezone=Asia/Seoul", "/app/UserManage.jar"]
+CMD ["java", "-jar", "-Duser.timezone=Asia/Seoul", "/app/UserManage.jar"]

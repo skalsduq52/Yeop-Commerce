@@ -1,6 +1,21 @@
+#server:
+#  port: 8081
+
 spring:
   application:
     name: user
+
+  data:
+    redis:
+      url: redis://172.31.45.57:6379
+      # url: redis://localhost:6379
+
+  datasource:
+    url: jdbc:mariadb://laplace.c3m6o22cgj7p.ap-northeast-2.rds.amazonaws.com:3306/LAPLACE
+    #url: jdbc:mariadb://127.0.0.1:3306/LAPLACE
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: minyeop
+    password: skekd12
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -15,3 +30,16 @@ jwt:
   secret: YXNma2RqaDI0bzM1cmlqc2Rsa2ZmOTAyMzQ1rERFsdfwerfDAGqrtgSD1w123adfvdrgFGBKFVsdfl1o2sasf4512eaggfdf
   access-token-expiration: 3600000
   refresh-token-expiration: 604800000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://3.34.71.5:8761/eureka/
+  instance:
+    #hostname: localhost
+    hostname: 3.34.71.5
+    prefer-ip-address: true
+
