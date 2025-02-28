@@ -5,13 +5,13 @@ spring:
 
   data:
     redis:
-      url: redis://3.34.71.5:6379
+      url: redis://172.31.45.57:6379
 
   application:
     name: user
 
   datasource:
-    url: jdbc:mariadb://127.0.0.1:3306/LAPLACE
+    url: jdbc:mariadb://laplace.c3m6o22cgj7p.ap-northeast-2.rds.amazonaws.com:3306/LAPLACE
     driver-class-name: org.mariadb.jdbc.Driver
     username: minyeop
     password: skekd12
