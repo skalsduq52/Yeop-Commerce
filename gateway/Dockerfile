@@ -9,4 +9,4 @@ COPY build/libs/gateway-0.0.1-SNAPSHOT.jar /app/gateway.jar
 
 ENV TZ=Asia/Seoul
 
-CMD ["java", "-jar", "-Dspring.profiles.active=server","-Duser.timezone=Asia/Seoul", "/app/gateway.jar"]
+CMD ["java", "-jar", "-Duser.timezone=Asia/Seoul", "/app/gateway.jar"]
