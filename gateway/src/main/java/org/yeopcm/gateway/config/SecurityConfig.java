@@ -37,7 +37,7 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         // 허용할 Origin
-        config.setAllowedOrigins(Arrays.asList("http://127.0.0.1:8088", "http://localhost:8088"));
+        config.setAllowedOrigins(Arrays.asList("http://127.0.0.1:80", "http://localhost:80"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         config.setExposedHeaders(Arrays.asList("Authorization"));
