@@ -76,12 +76,28 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/info/{email}")
-    public ResponseEntity<UserResponseDTO> getUserInfo(@PathVariable String email){
+    @GetMapping("/info")
+    public ResponseEntity<UserResponseDTO> getUserInfo(@RequestHeader("Authorization") String token){
 
-        ReactiveSecurityContextHolder.getContext();
+        UserResponseDTO responseDTO = userService.getUser(token);
 
-        UserResponseDTO responseDTO = userService.getUser(email);
+        return ResponseEntity.ok(responseDTO);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<UserResponseDTO> updateUser(@RequestBody UserRequestDTO userRequestDTO){
+
+        UserResponseDTO responseDTO = userService.updateUser(userRequestDTO);
+
+        return ResponseEntity.ok(responseDTO);
+    }
+
+    @PostMapping("/validatePassword")
+    public ResponseEntity<UserResponseDTO> validatePassword(
+            @RequestHeader("Authorization") String token,
+            @RequestBody Map<String, String> requestBody){
+
+        UserResponseDTO responseDTO = userService.validatePassword(token, requestBody.get("password"));
 
         return ResponseEntity.ok(responseDTO);
     }

@@ -82,15 +82,17 @@ public class UserService {
 
         redisTemplate.opsForValue().set(jwtToken,"logout",1, TimeUnit.HOURS);// Authorities (권한 정보)
 
-        String claim = jwtTokenProvider.getClaimsFromToken(jwtToken).getSubject();
+        String email = jwtTokenProvider.getClaimsFromToken(jwtToken).getSubject();
         SecurityContextHolder.clearContext();
 
-        redisTemplate.delete(claim);
+        redisTemplate.delete(email);
 
         return "로그아웃 성공";
     }
 
-    public UserResponseDTO getUser(String email) {
+    public UserResponseDTO getUser(String token) {
+        String jwtToken = token.substring(7);
+        String email = jwtTokenProvider.getClaimsFromToken(jwtToken).getSubject();
 
         User user = userRepository.findByEmail(email)
                 .orElseThrow(()-> new RuntimeException("사용자를 찾을 수 업습니다."));
@@ -103,6 +105,26 @@ public class UserService {
                 .build();
     }
 
+    public UserResponseDTO validatePassword(String token, String password) {
+        String jwtToken = token.substring(7);
+        String email = jwtTokenProvider.getClaimsFromToken(jwtToken).getSubject();
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(()-> new RuntimeException("사용자를 찾을 수 업습니다."));
+
+        if(!passwordEncoder.matches(password, user.getPassword())) {
+            throw new LoginValidException("비밀번호를 다시 해주세요");
+        }
+
+        return UserResponseDTO.builder()
+                .email(user.getEmail())
+                .name(user.getName())
+                .phone(user.getPhone())
+                .address(user.getAddress())
+                .build();
+    }
+
+
     public String generateToken(String email) {
         String accessToken = jwtTokenProvider.generateAccessToken(email);
         String refreshToken = jwtTokenProvider.generateRefreshToken(email);
@@ -110,5 +132,23 @@ public class UserService {
         redisTemplate.opsForValue().set(email, refreshToken, 7, TimeUnit.DAYS);
 
         return accessToken;
+    }
+
+    public UserResponseDTO updateUser(UserRequestDTO userDTO) {
+
+        User user = userRepository.findByEmail(userDTO.getEmail())
+                .orElseThrow(()-> new RuntimeException("사용자를 찾을 수 업습니다."));
+
+        user.setAddress(userDTO.getAddress());
+        user.setPhone(userDTO.getPhone());
+
+        userRepository.save(user);
+
+        return UserResponseDTO.builder()
+                .email(user.getEmail())
+                .name(user.getName())
+                .address(user.getAddress())
+                .phone(user.getPhone())
+                .build();
     }
 }
